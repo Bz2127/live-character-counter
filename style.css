@@ -1,0 +1,186 @@
+/* Universal box-sizing for consistent layout */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body styling: Centering the content and setting a vibrant background */
+body {
+  min-height: 100vh; /* Use min-height for better content flow */
+  background: linear-gradient(135deg, #00cc6a, #00a050); /* Gradient background for depth */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+  color: #333; /* Default text color for better contrast */
+  line-height: 1.6; /* Improved readability */
+  transition: background-color 0.5s ease-in-out; /* Smooth transition for body background */
+}
+
+/* Main container for the character counter */
+.container {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Slightly refined shadow */
+  max-width: 450px; /* Slightly wider container */
+  width: 90%;
+  text-align: center;
+  position: relative; /* Needed for potential absolute positioning of child elements */
+  overflow: hidden; /* Ensures inner elements don't spill out */
+}
+
+/* Heading styling */
+h1 {
+  color: #008040; /* A darker shade of green */
+  margin-bottom: 25px; /* More space below the heading */
+  font-weight: 600; /* Bolder font for prominence */
+  font-size: 2.2em; /* Larger heading */
+}
+
+/* Wrapper for textarea to manage layout if needed later */
+.textarea-wrapper {
+  position: relative;
+  margin-bottom: 25px; /* More space below textarea wrapper to accommodate progress bar */
+}
+
+/* Textarea specific styling */
+textarea {
+  width: 100%;
+  min-height: 120px; /* Slightly increased minimum height */
+  padding: 12px 15px; /* More padding for better text flow */
+  font-size: 1.1em; /* Slightly larger font size in textarea */
+  border: 2px solid #ddd; /* Lighter, subtle border */
+  border-radius: 8px;
+  resize: vertical; /* Allow only vertical resizing, more controlled */
+  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transitions */
+  outline: none; /* Remove default outline */
+  margin-bottom: 15px; /* Space between textarea and progress bar */
+}
+
+/* Focus state for textarea */
+textarea:focus {
+  border-color: #00cc6a; /* Highlight border on focus */
+  box-shadow: 0 0 0 3px rgba(0, 204, 106, 0.2); /* Subtle glow on focus */
+}
+
+/* Style when character limit is reached */
+textarea.limit-reached {
+  border-color: #e74c3c; /* Red border for warning */
+  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.2); /* Red glow */
+}
+
+
+/* Placeholder text styling */
+textarea::placeholder {
+  color: #aaa;
+  opacity: 0.8; /* Slightly less opaque placeholder */
+}
+
+/* Progress Bar Styles */
+.progress-bar-container {
+  width: 100%;
+  height: 8px; /* Height of the progress bar */
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden; /* Ensures the inner bar doesn't spill */
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%; /* Initial width, controlled by JS */
+  background-color: #00cc6a; /* Default progress color */
+  border-radius: 4px;
+  transition: width 0.3s ease-out, background-color 0.3s ease-out; /* Smooth transitions for width and color */
+}
+
+/* Styles for different progress states */
+.progress-bar.near-limit {
+  background-color: #f39c12; /* Orange for nearing limit */
+}
+
+.progress-bar.limit-reached {
+  background-color: #e74c3c; /* Red for limit reached */
+}
+
+/* Status Indicators (Character, Word, Reading Time) */
+.status-indicators {
+  display: flex;
+  justify-content: space-around; /* Distribute items evenly */
+  flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+  gap: 10px; /* Space between indicators */
+  margin-bottom: 25px; /* Space above buttons */
+}
+
+.status-indicators p {
+  font-size: 0.9em;
+  color: #666;
+  font-weight: 500;
+  white-space: nowrap; /* Prevent text from wrapping within indicator */
+}
+
+.status-indicators span {
+  font-weight: 600;
+  color: #008040; /* Default green for counts */
+}
+
+/* Character count specific styling (can be overridden by JS for warning colors) */
+.counter #char-count {
+  font-weight: 700; /* Make char count slightly bolder */
+}
+
+/* Buttons Container */
+.buttons-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px; /* Space between buttons */
+  margin-top: 20px; /* Space above buttons */
+}
+
+/* General Button Styles */
+.btn {
+  padding: 10px 20px;
+  font-size: 1em;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  color: #fff;
+  background-color: #00cc6a; /* Default button color */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover {
+  background-color: #00a050; /* Darker green on hover */
+  transform: translateY(-2px); /* Slight lift effect */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn:active {
+  transform: translateY(0); /* Press down effect */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Danger Button Style (for Clear) */
+.btn-danger {
+  background-color: #e74c3c; /* Red for danger action */
+}
+
+.btn-danger:hover {
+  background-color: #c0392b; /* Darker red on hover */
+}
+
+/* Screen reader only class (for accessibility) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Live Character Counter</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Live Character Counter</h1>
+
+      <div class="textarea-wrapper">
+        <label for="text-input" class="sr-only">Enter your text here</label>
+        <textarea
+          id="text-input"
+          placeholder="Start typing to see the magic..."
+          maxlength="200"
+          aria-describedby="status-info"
+        ></textarea>
+        <div class="progress-bar-container">
+          <div class="progress-bar" id="progress-bar"></div>
+        </div>
+      </div>
+
+      <div class="status-indicators" id="status-info">
+        <p class="counter" aria-live="polite">
+          Characters: <span id="char-count">0</span>/<span id="max-char"
+            >200</span
+          >
+        </p>
+        <p class="word-count">Words: <span id="word-count">0</span></p>
+        <p class="reading-time">Reading Time: <span id="reading-time">0</span> min</p>
+      </div>
+
+      <div class="buttons-container">
+        <button id="copy-button" class="btn">Copy Text</button>
+        <button id="clear-button" class="btn btn-danger">Clear Text</button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
