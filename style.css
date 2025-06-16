@@ -1,144 +1,128 @@
-/* Universal box-sizing for consistent layout */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Body styling: Centering the content and setting a vibrant background */
 body {
-  min-height: 100vh; /* Use min-height for better content flow */
-  background: linear-gradient(135deg, #00cc6a, #00a050); /* Gradient background for depth */
+  min-height: 100vh;
+  background: linear-gradient(135deg, #00cc6a, #00a050);
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: "Poppins", sans-serif;
-  color: #333; /* Default text color for better contrast */
-  line-height: 1.6; /* Improved readability */
-  transition: background-color 0.5s ease-in-out; /* Smooth transition for body background */
+  color: #333;
+  line-height: 1.6;
+  transition: background-color 0.5s ease-in-out;
 }
 
-/* Main container for the character counter */
 .container {
   background: #fff;
   padding: 30px;
   border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Slightly refined shadow */
-  max-width: 450px; /* Slightly wider container */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  max-width: 450px;
   width: 90%;
   text-align: center;
-  position: relative; /* Needed for potential absolute positioning of child elements */
-  overflow: hidden; /* Ensures inner elements don't spill out */
+  position: relative;
+  overflow: hidden;
 }
 
-/* Heading styling */
 h1 {
-  color: #008040; /* A darker shade of green */
-  margin-bottom: 25px; /* More space below the heading */
-  font-weight: 600; /* Bolder font for prominence */
-  font-size: 2.2em; /* Larger heading */
+  color: #008040;
+  margin-bottom: 25px;
+  font-weight: 600;
+  font-size: 2.2em;
 }
 
-/* Wrapper for textarea to manage layout if needed later */
 .textarea-wrapper {
   position: relative;
-  margin-bottom: 25px; /* More space below textarea wrapper to accommodate progress bar */
+  margin-bottom: 25px;
 }
 
-/* Textarea specific styling */
 textarea {
   width: 100%;
-  min-height: 120px; /* Slightly increased minimum height */
-  padding: 12px 15px; /* More padding for better text flow */
-  font-size: 1.1em; /* Slightly larger font size in textarea */
-  border: 2px solid #ddd; /* Lighter, subtle border */
+  min-height: 120px;
+  padding: 12px 15px;
+  font-size: 1.1em;
+  border: 2px solid #ddd;
   border-radius: 8px;
-  resize: vertical; /* Allow only vertical resizing, more controlled */
-  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transitions */
-  outline: none; /* Remove default outline */
-  margin-bottom: 15px; /* Space between textarea and progress bar */
+  resize: vertical;
+  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  outline: none;
+  margin-bottom: 15px;
 }
 
-/* Focus state for textarea */
 textarea:focus {
-  border-color: #00cc6a; /* Highlight border on focus */
-  box-shadow: 0 0 0 3px rgba(0, 204, 106, 0.2); /* Subtle glow on focus */
+  border-color: #00cc6a;
+  box-shadow: 0 0 0 3px rgba(0, 204, 106, 0.2);
 }
 
-/* Style when character limit is reached */
 textarea.limit-reached {
-  border-color: #e74c3c; /* Red border for warning */
-  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.2); /* Red glow */
+  border-color: #e74c3c;
+  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.2);
 }
 
-
-/* Placeholder text styling */
 textarea::placeholder {
   color: #aaa;
-  opacity: 0.8; /* Slightly less opaque placeholder */
+  opacity: 0.8;
 }
 
-/* Progress Bar Styles */
 .progress-bar-container {
   width: 100%;
-  height: 8px; /* Height of the progress bar */
+  height: 8px;
   background-color: #e0e0e0;
   border-radius: 4px;
-  overflow: hidden; /* Ensures the inner bar doesn't spill */
+  overflow: hidden;
 }
 
 .progress-bar {
   height: 100%;
-  width: 0%; /* Initial width, controlled by JS */
-  background-color: #00cc6a; /* Default progress color */
+  width: 0%;
+  background-color: #00cc6a;
   border-radius: 4px;
-  transition: width 0.3s ease-out, background-color 0.3s ease-out; /* Smooth transitions for width and color */
+  transition: width 0.3s ease-out, background-color 0.3s ease-out;
 }
 
-/* Styles for different progress states */
 .progress-bar.near-limit {
-  background-color: #f39c12; /* Orange for nearing limit */
+  background-color: #f39c12;
 }
 
 .progress-bar.limit-reached {
-  background-color: #e74c3c; /* Red for limit reached */
+  background-color: #e74c3c;
 }
 
-/* Status Indicators (Character, Word, Reading Time) */
 .status-indicators {
   display: flex;
-  justify-content: space-around; /* Distribute items evenly */
-  flex-wrap: wrap; /* Allow items to wrap on smaller screens */
-  gap: 10px; /* Space between indicators */
-  margin-bottom: 25px; /* Space above buttons */
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 25px;
 }
 
 .status-indicators p {
   font-size: 0.9em;
   color: #666;
   font-weight: 500;
-  white-space: nowrap; /* Prevent text from wrapping within indicator */
+  white-space: nowrap;
 }
 
 .status-indicators span {
   font-weight: 600;
-  color: #008040; /* Default green for counts */
+  color: #008040;
 }
 
-/* Character count specific styling (can be overridden by JS for warning colors) */
 .counter #char-count {
-  font-weight: 700; /* Make char count slightly bolder */
+  font-weight: 700;
 }
 
-/* Buttons Container */
 .buttons-container {
   display: flex;
   justify-content: center;
-  gap: 15px; /* Space between buttons */
-  margin-top: 20px; /* Space above buttons */
+  gap: 15px;
+  margin-top: 20px;
 }
 
-/* General Button Styles */
 .btn {
   padding: 10px 20px;
   font-size: 1em;
@@ -148,31 +132,29 @@ textarea::placeholder {
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
   color: #fff;
-  background-color: #00cc6a; /* Default button color */
+  background-color: #00cc6a;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .btn:hover {
-  background-color: #00a050; /* Darker green on hover */
-  transform: translateY(-2px); /* Slight lift effect */
+  background-color: #00a050;
+  transform: translateY(-2px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .btn:active {
-  transform: translateY(0); /* Press down effect */
+  transform: translateY(0);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Danger Button Style (for Clear) */
 .btn-danger {
-  background-color: #e74c3c; /* Red for danger action */
+  background-color: #e74c3c;
 }
 
 .btn-danger:hover {
-  background-color: #c0392b; /* Darker red on hover */
+  background-color: #c0392b;
 }
 
-/* Screen reader only class (for accessibility) */
 .sr-only {
   position: absolute;
   width: 1px;
